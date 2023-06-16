@@ -40,13 +40,30 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "rock")
   ) {
-    results.textContent = `You lose! ${computerSelection} beats ${playerSelection}!`;
     cpuScore += 1;
     cpuScoreText.textContent = `${cpuScore}`;
+    if (cpuScore === 5) {
+      results.textContent = `You lose!`;
+      cpuScore = 0;
+      playerScore = 0;
+      cpuScoreText.textContent = `${cpuScore}`;
+      playerScoreText.textContent = `${playerScore}`;
+    } else {
+      results.textContent = `Round lost! ${computerSelection} beats ${playerSelection}!`;
+    }
   } else {
-    results.textContent = `You win! ${playerSelection} beats ${computerSelection}!`;
     playerScore += 1;
     playerScoreText.textContent = `${playerScore}`;
+
+    if (playerScore === 5) {
+      results.textContent = `You win!`;
+      cpuScore = 0;
+      playerScore = 0;
+      cpuScoreText.textContent = `${cpuScore}`;
+      playerScoreText.textContent = `${playerScore}`;
+    } else {
+      results.textContent = `Round won! ${playerSelection} beats ${computerSelection}!`;
+    }
   }
 }
 
